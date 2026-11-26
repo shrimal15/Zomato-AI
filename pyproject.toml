@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zomato-recommendations"
+version = "0.1.0"
+description = "Restaurant recommendations from a cleaned Zomato catalog and a language model."
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2",
+    "pyarrow>=15",
+    "huggingface_hub>=0.25",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+include = ["app*", "backend*", "phase1*", "phase2*", "phase3*", "phase4*", "phase5*"]
+exclude = ["*.tests", "*.tests.*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["app/tests", "backend/tests", "phase1/tests", "phase2/tests", "phase3/tests", "phase4/tests", "phase5/tests"]
